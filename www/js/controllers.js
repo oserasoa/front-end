@@ -54,24 +54,42 @@ angular.module('starter.controllers', [])
 
   .controller('Hoteles', function ($scope, $http) {
 
-    $scope.arr = function (num) {
+    nombreHotel = "";
+    $scope.nombreHotel = "";
+    estrellas = '0';
+    
+
+    $scope.stars = function (num) {
       var arr = [];
       for (i = 0; i < num; i++) {
         arr.push(i);
       }
       return arr;
-    }
+    };
 
-    $scope.changeStatus = function (val) {
+    $scope.enviar = function(valNombre){
+      nombreHotel = valNombre;
       $http({
         method: 'GET',
         url: 'http://127.0.0.1:3001/hoteles',
-        params: { stars: val }
+        params: { stars: estrellas , nameHotel: nombreHotel}
       }).success(function (data, status, headers, config) {
         $scope.hoteles = data;
-        console.log($scope.hoteles);
-        //console.log(arr);
-        //$scope.stars = function()
+        //console.log($scope.hoteles);
+      }).error(function (data, status, headers, config) {
+        console.log("Ha fallado la petición. Estado HTTP:" + status);
+      });
+    };
+
+    $scope.changeStatus = function (valEstrellas) {
+      estrellas = valEstrellas;
+      $http({
+        method: 'GET',
+        url: 'http://127.0.0.1:3001/hoteles',
+        params: { stars: estrellas , nameHotel: nombreHotel}
+      }).success(function (data, status, headers, config) {
+        $scope.hoteles = data;
+        //console.log($scope.hoteles);
       }).error(function (data, status, headers, config) {
         console.log("Ha fallado la petición. Estado HTTP:" + status);
       });

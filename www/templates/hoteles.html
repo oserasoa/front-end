@@ -13,8 +13,9 @@
                     </div>
 
                     <ion-input class="item item-input">
-                        <input type="text" placeholder="Ingrese el nombre de hotel">
+                        <input type="text" ng-model="nombreHotel" placeholder="Ingrese el nombre de hotel">
                     </ion-input>
+                    <button class="button button-block" ng-click="enviar(nombreHotel)">Enviar</button>
                 </div>
 
                 <div class="filtros">
@@ -52,10 +53,6 @@
                         <ion-radio ng-click="changeStatus('1')" value="1">
                             <img src="img/star.svg" class="icono" width="15px">
                         </ion-radio>
-
-
-
-
                     </ion-list>
                 </div>
             </div>
@@ -66,7 +63,16 @@
                     </div>
                     <div class="col">
                         <h4>{{hotel.name}}</h4>
-                        <img src="img/star.svg" class="icono" width="15px" ng-repeat="x in arr(hotel.stars)">
+                        <img ng-src="img/star.svg" class="icon-star" width="15px" ng-repeat="x in stars(hotel.stars)">
+                        <div>
+                            <img ng-src="img/{{amenity}}.svg" class="icon-amenity" width="15px" ng-repeat="amenity in hotel.amenities">
+                        </div>
+                    </div>
+                    <div class="col precio" align="center">
+                        <h5>Precio por noche por habitación</h5>
+                        <h1>$ {{hotel.price}}</h1>
+                        <button class="button button-block"><i class="icon ion-home"></i>Ver Hotel</button>
+                        
                     </div>
                 </div>
             </div>

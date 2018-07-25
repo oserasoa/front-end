@@ -30,7 +30,20 @@
     height: 50px
 }
 
-.icono{
-    color: red !important;
-    fill: red !important;
+.icon-star{
+    margin: 3px;
+}
+
+.icon-amenity{
+    margin: 3px;
+}
+.precio{
+    border-left-style: dashed;
+    border-width: 2px;
+    border-color: #cccccc;
+}
+
+.button-block{
+    background-color: #002699 !important;
+    color: white;
 }
