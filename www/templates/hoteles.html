@@ -1,0 +1,75 @@
+<ion-view view-title="">
+    <ion-content class="content">
+        <div class="row responsive-sm">
+            <div class="col col-20">
+                <div class="filtros">
+                    <h4>Filtros</h4>
+                </div>
+
+                <div class="filtros">
+                    <div class="item-input-inset">
+                        <img src="img/search.svg" class="icono" width="15px">
+                        <h4>Nombre de Hotel</h4>
+                    </div>
+
+                    <ion-input class="item item-input">
+                        <input type="text" placeholder="Ingrese el nombre de hotel">
+                    </ion-input>
+                </div>
+
+                <div class="filtros">
+
+                    <div class="item-input-inset">
+                        <img src="img/star.svg" class="icono" width="15px">
+                        <h4>Estrellas</h4>
+                    </div>
+                    <ion-list radio-group [(ngModel)]="status">
+                        <ion-radio ng-click="changeStatus('0')" value="0">
+                            Todas las estrellas
+                        </ion-radio>
+                        <ion-radio ng-click="changeStatus('5')" value="5">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                        </ion-radio>
+                        <ion-radio ng-click="changeStatus('4')" value="4">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                        </ion-radio>
+                        <ion-radio ng-click="changeStatus('3')" value="3">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                        </ion-radio>
+                        <ion-radio ng-click="changeStatus('2')" value="2">
+                            <img src="img/star.svg" class="icono" width="15px">
+                            <img src="img/star.svg" class="icono" width="15px">
+                        </ion-radio>
+                        <ion-radio ng-click="changeStatus('1')" value="1">
+                            <img src="img/star.svg" class="icono" width="15px">
+                        </ion-radio>
+
+
+
+
+                    </ion-list>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row responsive-sm registros" ng-repeat="hotel in hoteles">
+                    <div class="col">
+                        <img ng-src="http://127.0.0.1:3001/images/hotels/{{hotel.image}}">
+                    </div>
+                    <div class="col">
+                        <h4>{{hotel.name}}</h4>
+                        <img src="img/star.svg" class="icono" width="15px" ng-repeat="x in arr(hotel.stars)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
